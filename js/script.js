@@ -27,10 +27,10 @@ window.onload = function () {
       // CHECK for speed
       switch (key) {
         case "ArrowLeft":
-          game.crab.directionX = -2;
+          game.crab.directionX = -3;
           break;
         case "ArrowRight":
-          game.crab.directionX = 2;
+          game.crab.directionX = 3;
           break;
       }
     }

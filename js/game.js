@@ -17,6 +17,12 @@ class Game {
     this.width = 1000; //CHECK
     this.objects = [];
     this.positiveobjects = [];
+    this.objImages = ["../images/blowfish.png"];
+    this.posObjImages = [
+      "../images/oyster1.png",
+      "../images/octopus.png",
+      "../images/shrimp.png",
+    ];
     this.score = 0;
     this.lives = 3;
     this.gameIsOver = false;
@@ -65,12 +71,32 @@ class Game {
         // Update the counter variable to account for the removed object
         i--;
       } else if (object.top > this.height) {
-        // Increase the score by 1
-        this.score++;
-        // Remove the obstacle from the DOM
         object.element.remove();
         // Remove obstacle object from the array
         this.objects.splice(i, 1);
+        // Update the counter variable to account for the removed obstacle
+        i--;
+      }
+    }
+
+    for (let i = 0; i < this.positiveobjects.length; i++) {
+      const positiveObject = this.positiveobjects[i];
+      positiveObject.move();
+
+      if (this.crab.didCollide(positiveObject)) {
+        // Remove the object element from the DOM
+        positiveObject.element.remove();
+        // Remove object object from the array
+        this.positiveobjects.splice(i, 1);
+        // increase score
+        this.score++;
+        //console.log(this.lives, "lives");
+        // Update the counter variable to account for the removed object
+        i--;
+      } else if (positiveObject.top > this.height) {
+        positiveObject.element.remove();
+        // Remove obstacle object from the array
+        this.positiveobjects.splice(i, 1);
         // Update the counter variable to account for the removed obstacle
         i--;
       }
@@ -86,17 +112,38 @@ class Game {
     if (this.lives === 0) {
       this.endGame();
     }
+
+    const scoreCountElement = document.getElementById("score");
+    if (scoreCountElement) {
+      scoreCountElement.innerText = this.score;
+    }
     // create new object based on a random probability
     //negative randomnesss decrease randomness
-    if (Math.random() > 0.98 && this.objects.length < 1) {
-      this.objects.push(new Object(this.gameScreen, "../images/crabfav.png"));
+    if (
+      Math.random() > 0.98 &&
+      this.objects.length < 1 &&
+      this.positiveobjects.length < 1
+    ) {
+      // Randomly select an image from the objImages array
+      const randomIndex = Math.floor(Math.random() * this.objImages.length);
+      const randomImage = this.objImages[randomIndex];
+
+      // Create a regular object with the randomly selected image
+      this.objects.push(new Object(this.gameScreen, randomImage));
     }
 
-    // this is positive randomness increase randomness
-    if (Math.random() > 0.98 && this.positiveobjects.length < 1) {
-      this.positiveobjects.push(
-        new Object(this.gameScreen, "../images/clam.png")
-      );
+    // this is positive randomness (e.g. increase randomness)
+    if (
+      Math.random() > 0.98 &&
+      this.positiveobjects.length < 1 &&
+      this.objects.length < 1
+    ) {
+      // Randomly select an image from the posObjImages array
+      const randomIndex = Math.floor(Math.random() * this.posObjImages.length);
+      const randomImage = this.posObjImages[randomIndex];
+
+      // Create a positive object with the randomly selected image
+      this.positiveobjects.push(new Object(this.gameScreen, randomImage));
     }
   }
   // end game method
