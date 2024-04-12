@@ -4,16 +4,16 @@ class Crab {
     this.gameScreen = gameScreen;
     this.left = left;
     this.top = top;
-    this.width = width;
-    this.height = height;
+    this.width = 100;
+    this.height = 100;
     this.directionX = 0;
     this.directionY = 0;
-    this.element = document.createElement("img"); // Where is the image stored?
+    this.element = document.createElement("img"); //img in "game.js"
 
     this.element.src = imgSrc;
     this.element.style.position = "absolute";
-    this.element.style.width = `${width}px`;
-    this.element.style.height = `${height}px`;
+    this.element.style.width = `150px`;
+    this.element.style.height = `150px`;
     this.element.style.left = `${left}px`;
     this.element.style.top = `${top}px`;
 

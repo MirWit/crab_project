@@ -1,5 +1,3 @@
-//create game class
-// including game screens
 class Game {
   constructor() {
     this.startScreen = document.getElementById("game-intro");
@@ -11,10 +9,10 @@ class Game {
       500,
       100,
       150,
-      "../images/crabfav.png"
+      "../images/crab.gif"
     );
     this.height = 600;
-    this.width = 1000; //CHECK
+    this.width = 1000;
     this.objects = [];
     this.positiveobjects = [];
     this.objImages = ["../images/blowfish.png"];
@@ -25,10 +23,12 @@ class Game {
     ];
     this.score = 0;
     this.lives = 3;
+    this.speed = 5;
     this.gameIsOver = false;
     this.gameIntervalId = null;
-    this.gameLoopFrequency = Math.round(1000 / 60); //CHECK
+    this.gameLoopFrequency = Math.round(1000 / 60);
   }
+
   start() {
     this.gameScreen.style.height = `${this.height}px`;
     this.gameScreen.style.width = `${this.width}px`;
@@ -41,10 +41,7 @@ class Game {
     }, this.gameLoopFrequency);
   }
 
-  // loop & update function
   gameLoop() {
-    //console.log("check loop");
-
     this.update();
 
     if (this.gameIsOver === true) {
@@ -55,60 +52,43 @@ class Game {
   update() {
     this.crab.move();
 
-    // catch check (ref. to didCollide)
+    // Catch check for negative objects
     for (let i = 0; i < this.objects.length; i++) {
       const object = this.objects[i];
       object.move();
-      // If the crab catches a bad object
       if (this.crab.didCollide(object)) {
-        // Remove the object element from the DOM
         object.element.remove();
-        // Remove object object from the array
         this.objects.splice(i, 1);
-        // Reduce crab's lives by 1
         this.lives--;
-        //console.log(this.lives, "lives");
-        // Update the counter variable to account for the removed object
         i--;
       } else if (object.top > this.height) {
         object.element.remove();
-        // Remove obstacle object from the array
         this.objects.splice(i, 1);
-        // Update the counter variable to account for the removed obstacle
         i--;
       }
     }
 
+    // Catch check for positive objects
     for (let i = 0; i < this.positiveobjects.length; i++) {
       const positiveObject = this.positiveobjects[i];
       positiveObject.move();
-
       if (this.crab.didCollide(positiveObject)) {
-        // Remove the object element from the DOM
         positiveObject.element.remove();
-        // Remove object object from the array
         this.positiveobjects.splice(i, 1);
-        // increase score
         this.score++;
-        //console.log(this.lives, "lives");
-        // Update the counter variable to account for the removed object
         i--;
       } else if (positiveObject.top > this.height) {
         positiveObject.element.remove();
-        // Remove obstacle object from the array
         this.positiveobjects.splice(i, 1);
-        // Update the counter variable to account for the removed obstacle
         i--;
       }
     }
 
-    // Update the lives count on the screen if the element exists
     const livesCountElement = document.getElementById("lives");
     if (livesCountElement) {
       livesCountElement.innerText = this.lives;
     }
 
-    // If the lives are 0, end the game
     if (this.lives === 0) {
       this.endGame();
     }
@@ -116,47 +96,103 @@ class Game {
     const scoreCountElement = document.getElementById("score");
     if (scoreCountElement) {
       scoreCountElement.innerText = this.score;
+      console.log(this.score, "the score");
     }
-    // create new object based on a random probability
-    //negative randomnesss decrease randomness
-    if (
-      Math.random() > 0.98 &&
-      this.objects.length < 1 &&
-      this.positiveobjects.length < 1
-    ) {
-      // Randomly select an image from the objImages array
-      const randomIndex = Math.floor(Math.random() * this.objImages.length);
-      const randomImage = this.objImages[randomIndex];
+    let levelCount;
+    levelCount = document.getElementById("level");
 
-      // Create a regular object with the randomly selected image
-      this.objects.push(new Object(this.gameScreen, randomImage));
+    //update speed (score % 5) and levels
+    switch (this.score) {
+      case 5:
+        this.speed = 6;
+        levelCount.innerText = "2";
+        break;
+      case 10:
+        this.speed = 7;
+        levelCount.innerText = "3";
+        break;
+      case 15:
+        this.speed = 8;
+        levelCount.innerText = "4";
+        break;
+      case 20:
+        this.speed = 9;
+        levelCount.innerText = "5";
+        break;
+      case 25:
+        this.speed = 10;
+        levelCount.innerText = "6";
+        break;
+      case 30:
+        this.speed = 11;
+        levelCount.innerText = "7";
+        break;
+      case 35:
+        this.speed = 12;
+        levelCount.innerText = "8";
+        break;
+      case 40:
+        this.speed = 13;
+        levelCount.innerText = "9";
+        break;
+      case 45:
+        this.speed = 14;
+        levelCount.innerText = "10";
+        break;
+      case 45:
+        this.speed = 15;
+        levelCount.innerText = "11";
+        break;
+      case 50:
+        this.speed = 16;
+        levelCount.innerText = "12";
+        break;
+      case 55:
+        this.speed = 17;
+        levelCount.innerText = "13";
+        break;
+      case 60:
+        this.speed = 18;
+        levelCount.innerText = "14";
+        break;
+      case 65:
+        this.speed = 19;
+        levelCount.innerText = "15";
+        break;
+      case 70:
+        this.speed = 20;
+        levelCount.innerText = "15";
+        break;
     }
 
-    // this is positive randomness (e.g. increase randomness)
-    if (
-      Math.random() > 0.98 &&
-      this.positiveobjects.length < 1 &&
-      this.objects.length < 1
-    ) {
-      // Randomly select an image from the posObjImages array
-      const randomIndex = Math.floor(Math.random() * this.posObjImages.length);
-      const randomImage = this.posObjImages[randomIndex];
-
-      // Create a positive object with the randomly selected image
-      this.positiveobjects.push(new Object(this.gameScreen, randomImage));
+    // Create new objects if both arrays are empty
+    if (this.objects.length === 0 && this.positiveobjects.length === 0) {
+      const isPositive = Math.random() > 0.25;
+      const randomIndex = Math.floor(
+        Math.random() *
+          (isPositive ? this.posObjImages.length : this.objImages.length)
+      );
+      const randomImage = isPositive
+        ? this.posObjImages[randomIndex]
+        : this.objImages[randomIndex];
+      if (isPositive) {
+        this.positiveobjects.push(
+          new Object(this.gameScreen, randomImage, this.speed)
+        );
+      } else {
+        this.objects.push(new Object(this.gameScreen, randomImage, this.speed));
+      }
     }
   }
-  // end game method
+
   endGame() {
     this.crab.element.remove();
     this.objects.forEach((object) => object.element.remove());
 
     this.gameIsOver = true;
-    // Hide game screen
     this.startScreen.style.display = "none";
     this.gameScreen.style.display = "none";
 
-    // Show end game screen
     this.gameEndScreen.style.display = "block";
   }
 }
