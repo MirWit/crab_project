@@ -5,7 +5,9 @@ body {
 }
 
 #game-intro {
-  padding: 20px 0px;
+  display: flex;
+  padding: 0px 0px;
+  background-image: url(../images/bluebubbles.png);
 }
 
 #game-container {
@@ -21,8 +23,10 @@ body {
   padding: 20px 0px;
   overflow: hidden;
   position: relative;
-  background-image: url(../images/back-placeholder.jpg);
+  background-image: url(../images/background3.png);
   background-size: cover;
+  border-width: 2px;
+  border-radius: 40px;
 }
 
 #game-end {
