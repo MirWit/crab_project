@@ -11,6 +11,7 @@
   <body>
     <main>
       <div id="game-intro">
+        <h1>CRAB!</h1>
         <p>
           Lorem ipsum dolor sit amet, consetetur, sed diam voluptua. et ea
           rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
@@ -20,11 +21,23 @@
           <p>Score: <span id="score">0</span></p>
           <p>Lives: <span id="lives">3</span></p>
         </div>
-        <button id="start-button">Start game!</button>
+        <div id="button-container">
+          <button id="start-button">
+            <div id="button-content">
+              START<br />
+              GAME!
+            </div>
+          </button>
+        </div>
       </div>
 
       <div id="game-container">
         <div id="game-screen"></div>
+        <div id="stats">
+          <p>Level: <span id="level">1</span></p>
+          <p>Score: <span id="score">0</span></p>
+          <p>Lives: <span id="lives">3</span></p>
+        </div>
       </div>
 
       <div id="game-end">

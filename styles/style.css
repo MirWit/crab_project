@@ -6,8 +6,51 @@ body {
 
 #game-intro {
   display: flex;
-  padding: 0px 0px;
+  padding: 0;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
   background-image: url(../images/bluebubbles.png);
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#stats {
+  border-color: orange;
+  border-width: 2px;
+  border-radius: 40px;
+}
+
+#stats p {
+  font-size: 15px;
+}
+
+#button-container {
+  text-align: center;
+}
+
+#start-button {
+  background-image: url("../images/crab.gif");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  height: 300px; /* Set the height to be twice the original size */
+  width: 300px; /* Set the width to be twice the original size */
+  border: none;
+  cursor: pointer;
+  position: relative; /* Ensure the button is a positioned parent */
+}
+
+#button-content {
+  position: absolute;
+  width: 100%;
+  top: 60%; /* Position the text 50% down within the button */
+  transform: translateX(-13%);
+  text-align: center;
+  color: white;
 }
 
 #game-container {
@@ -34,14 +77,8 @@ body {
 }
 
 #game-intro p {
-  font-size: 30px;
-}
-
-#start-button {
-  background-image: url(../images/crabfav.png);
-  text-align: justify;
-  background-color: transparent;
-  height: 50px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 body button {
