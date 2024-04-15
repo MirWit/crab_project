@@ -2,7 +2,9 @@ class Game {
   constructor() {
     this.startScreen = document.getElementById("game-intro");
     this.gameScreen = document.getElementById("game-screen");
+    this.gameContainer = document.getElementById("game-container");
     this.gameEndScreen = document.getElementById("game-end");
+    this.gameEndContainer = document.getElementById("end-container");
     this.crab = new Crab(
       this.gameScreen,
       200,
@@ -24,9 +26,15 @@ class Game {
     this.score = 0;
     this.lives = 3;
     this.speed = 5;
+    this.stats = document.getElementById("stats");
     this.gameIsOver = false;
     this.gameIntervalId = null;
     this.gameLoopFrequency = Math.round(1000 / 60);
+  }
+  // Add the stats section containers
+  addStatsToContainer(container) {
+    const statsClone = document.getElementById("stats").cloneNode(true);
+    container.appendChild(statsClone);
   }
 
   start() {
@@ -39,6 +47,9 @@ class Game {
     this.gameIntervalId = setInterval(() => {
       this.gameLoop();
     }, this.gameLoopFrequency);
+
+    this.addStatsToContainer(this.gameContainer);
+    this.addStatsToContainer(this.gameEndScreen);
   }
 
   gameLoop() {
@@ -84,9 +95,11 @@ class Game {
       }
     }
 
+    //update functions lives, score, level
     const livesCountElement = document.getElementById("lives");
     if (livesCountElement) {
       livesCountElement.innerText = this.lives;
+      console.log("livesCountElement:", livesCountElement);
     }
 
     if (this.lives === 0) {
@@ -106,10 +119,12 @@ class Game {
       case 5:
         this.speed = 6;
         levelCount.innerText = "2";
+        console.log("Level 2 reached");
         break;
       case 10:
         this.speed = 7;
         levelCount.innerText = "3";
+        console.log("Level 3 reached");
         break;
       case 15:
         this.speed = 8;
@@ -183,6 +198,10 @@ class Game {
         this.objects.push(new Object(this.gameScreen, randomImage, this.speed));
       }
     }
+    const updateStats = document.getElementById("stats");
+    if (updateStats) {
+      updateStats.innerHTML = this.stats;
+    }
   }
 
   endGame() {
@@ -191,8 +210,8 @@ class Game {
 
     this.gameIsOver = true;
     this.startScreen.style.display = "none";
-    this.gameScreen.style.display = "none";
+    this.gameContainer.style.display = "none";
 
-    this.gameEndScreen.style.display = "block";
+    this.gameEndContainer.style.display = "block";
   }
 }

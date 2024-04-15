@@ -31,8 +31,8 @@ class Crab {
       this.left = 10;
     }
     // right hand side
-    if (this.left > this.gameScreen.offsetWidth - this.width - 10) {
-      this.left = this.gameScreen.offsetWidth - this.width - 10;
+    if (this.left > this.gameScreen.offsetWidth - this.width - 70) {
+      this.left = this.gameScreen.offsetWidth - this.width - 70;
     }
     this.updatePosition();
   }

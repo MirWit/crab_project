@@ -4,6 +4,13 @@ body {
   font-family: "Courier New", Courier, monospace;
 }
 
+h1 {
+  font-family: "Trebuchet MS", "Lucida Grande", Arial, sans-serif;
+  color: #f57418;
+  font-size: 50px;
+  text-shadow: 2px 1px white;
+}
+
 #game-intro {
   display: flex;
   padding: 0;
@@ -16,16 +23,32 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  padding: 10px 20px;
+}
+
+#game-intro p {
+  font-size: 25px;
+  font-weight: bold;
 }
 
 #stats {
-  border-color: orange;
-  border-width: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0px 10px;
+  padding: 15px 20px;
+  border: 2px solid black;
   border-radius: 40px;
+  line-height: 0.5;
+  height: 150px;
+  width: 120px;
 }
 
 #stats p {
-  font-size: 15px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 #button-container {
@@ -37,8 +60,8 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   background-color: transparent;
-  height: 300px; /* Set the height to be twice the original size */
-  width: 300px; /* Set the width to be twice the original size */
+  height: 280px; /* Set the height to be twice the original size */
+  width: 280px; /* Set the width to be twice the original size */
   border: none;
   cursor: pointer;
   position: relative; /* Ensure the button is a positioned parent */
@@ -47,10 +70,11 @@ body {
 #button-content {
   position: absolute;
   width: 100%;
-  top: 60%; /* Position the text 50% down within the button */
+  top: 58%; /* Position the text 50% down within the button */
   transform: translateX(-13%);
   text-align: center;
   color: white;
+  font-family: "Trebuchet MS", "Lucida Grande", Arial, sans-serif;
 }
 
 #game-container {
@@ -68,17 +92,55 @@ body {
   position: relative;
   background-image: url(../images/background3.png);
   background-size: cover;
-  border-width: 2px;
+  border: 2px solid black;
   border-radius: 40px;
 }
-
-#game-end {
+#end-container {
   display: none;
 }
 
-#game-intro p {
-  font-size: 20px;
+#game-end {
+  display: flex;
+  padding: 0;
+  flex-direction: column-reverse;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-image: url(../images/bluebubbles.png);
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#restart-button {
+  display: flex;
+  background-image: url("../images/crab.gif");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  height: 280px; /* Set the height to be twice the original size */
+  width: 280px; /* Set the width to be twice the original size */
+  border: none;
+  cursor: pointer;
+  position: relative; /* Ensure the button is a positioned parent */
+}
+
+#restart-button-content {
+  position: absolute;
+  width: 100%;
+  top: 58%; /* Position the text 50% down within the button */
+  transform: translateX(-13%);
+  text-align: center;
+  color: white;
+  font-family: "Trebuchet MS", "Lucida Grande", Arial, sans-serif;
+}
+
+#game-over {
+  display: flex;
+  font-size: 40px;
   font-weight: bold;
+  padding: 30px 0px 0px;
 }
 
 body button {
