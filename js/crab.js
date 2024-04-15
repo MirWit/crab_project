@@ -8,7 +8,7 @@ class Crab {
     this.height = 100;
     this.directionX = 0;
     this.directionY = 0;
-    this.element = document.createElement("img"); //img in "game.js"
+    this.element = document.createElement("img");
 
     this.element.src = imgSrc;
     this.element.style.position = "absolute";

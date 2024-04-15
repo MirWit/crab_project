@@ -101,7 +101,6 @@ class Game {
     const livesCountElement = document.getElementById("lives");
     if (livesCountElement) {
       livesCountElement.innerText = this.lives;
-      console.log("livesCountElement:", livesCountElement);
     }
 
     if (this.lives === 0) {
@@ -111,7 +110,6 @@ class Game {
     const scoreCountElement = document.getElementById("score");
     if (scoreCountElement) {
       scoreCountElement.innerText = this.score;
-      console.log(this.score, "the score");
     }
     let levelCount;
     levelCount = document.getElementById("level");
@@ -121,12 +119,10 @@ class Game {
       case 5:
         this.speed = 6;
         levelCount.innerText = "2";
-        console.log("Level 2 reached");
         break;
       case 10:
         this.speed = 7;
         levelCount.innerText = "3";
-        console.log("Level 3 reached");
         break;
       case 15:
         this.speed = 8;

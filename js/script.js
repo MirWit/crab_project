@@ -11,7 +11,6 @@ window.onload = function () {
   });
 
   function startGame() {
-    console.log("start game");
     game = new Game();
     game.start();
   }
@@ -24,13 +23,12 @@ window.onload = function () {
       event.preventDefault();
 
       // update crab's direction X & Y
-      // CHECK for speed
       switch (key) {
         case "ArrowLeft":
-          game.crab.directionX = -6;
+          game.crab.directionX = -7;
           break;
         case "ArrowRight":
-          game.crab.directionX = 6;
+          game.crab.directionX = 7;
           break;
       }
     }
