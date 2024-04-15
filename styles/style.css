@@ -7,10 +7,12 @@ body {
 }
 
 h1 {
+  display: flex;
   font-family: "Seymour One", sans-serif;
   color: #f57418;
   font-size: 50px;
   text-shadow: 2px 1px white;
+  padding: 0;
 }
 
 #game-intro {
@@ -62,8 +64,8 @@ h1 {
   background-size: contain;
   background-repeat: no-repeat;
   background-color: transparent;
-  height: 280px; /* Set the height to be twice the original size */
-  width: 280px; /* Set the width to be twice the original size */
+  height: 250px; /* Set the height to be twice the original size */
+  width: 250px; /* Set the width to be twice the original size */
   border: none;
   cursor: pointer;
   position: relative; /* Ensure the button is a positioned parent */
