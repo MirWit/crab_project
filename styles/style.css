@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Seymour+One&display=swap");
+
 body {
   padding: 0;
   text-align: center;
@@ -5,7 +7,7 @@ body {
 }
 
 h1 {
-  font-family: "Trebuchet MS", "Lucida Grande", Arial, sans-serif;
+  font-family: "Seymour One", sans-serif;
   color: #f57418;
   font-size: 50px;
   text-shadow: 2px 1px white;
@@ -23,11 +25,11 @@ h1 {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 10px 20px;
+  padding: 5px 25px;
 }
 
 #game-intro p {
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bold;
 }
 
@@ -38,10 +40,10 @@ h1 {
   flex-wrap: wrap;
   justify-content: center;
   margin: 0px 10px;
-  padding: 15px 20px;
+  padding: 5px 15px;
   border: 2px solid black;
   border-radius: 40px;
-  line-height: 0.5;
+  line-height: 0.1;
   height: 150px;
   width: 120px;
 }
@@ -74,14 +76,17 @@ h1 {
   transform: translateX(-13%);
   text-align: center;
   color: white;
-  font-family: "Trebuchet MS", "Lucida Grande", Arial, sans-serif;
+  font-family: "Seymour One", sans-serif;
+  font-size: 15px;
 }
 
 #game-container {
   display: flex;
+  height: 100vh;
   width: 100vw;
-  padding: 20px 0px;
+  padding: 50px 0px;
   justify-content: center;
+  background-color: #a2dbcb;
 }
 
 #game-screen {
@@ -95,13 +100,32 @@ h1 {
   border: 2px solid black;
   border-radius: 40px;
 }
+
+.game-stats,
+.final-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0px 10px;
+  padding: 5px 15px;
+  border: 2px solid black;
+  border-radius: 40px;
+  line-height: 0.1;
+  height: 150px;
+  width: 120px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
 #end-container {
   display: none;
 }
 
 #game-end {
   display: flex;
-  padding: 0;
+  padding: 20px 0 0;
   flex-direction: column-reverse;
   align-items: center;
   flex-wrap: wrap;
@@ -133,7 +157,8 @@ h1 {
   transform: translateX(-13%);
   text-align: center;
   color: white;
-  font-family: "Trebuchet MS", "Lucida Grande", Arial, sans-serif;
+  font-family: "Seymour One", sans-serif;
+  font-size: 15px;
 }
 
 #game-over {

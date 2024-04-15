@@ -34,6 +34,8 @@ class Game {
   // Add the stats section containers
   addStatsToContainer(container) {
     const statsClone = document.getElementById("stats").cloneNode(true);
+    statsClone.id = "stats-updated";
+    statsClone.classList.add("game-stats");
     container.appendChild(statsClone);
   }
 
@@ -49,7 +51,7 @@ class Game {
     }, this.gameLoopFrequency);
 
     this.addStatsToContainer(this.gameContainer);
-    this.addStatsToContainer(this.gameEndScreen);
+    // this.addStatsToContainer(this.gameEndScreen);
   }
 
   gameLoop() {
@@ -211,7 +213,10 @@ class Game {
     this.gameIsOver = true;
     this.startScreen.style.display = "none";
     this.gameContainer.style.display = "none";
-
     this.gameEndContainer.style.display = "block";
+
+    const statsClone = document.getElementById("stats-updated").cloneNode(true);
+    statsClone.classList.add("final-stats");
+    this.gameEndScreen.appendChild(statsClone);
   }
 }
