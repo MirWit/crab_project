@@ -11,7 +11,7 @@ class Game {
       500,
       100,
       150,
-      "../images/crab.gif"
+      "./images/crab.gif"
     );
     this.height = 600;
     this.width = 1000;
