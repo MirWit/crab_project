@@ -21,7 +21,7 @@ class Game {
     this.posObjImages = [
       "../images/oyster1.png",
       "../images/octopus.png",
-      "../images/shrimp.png",
+      "./images/shrimp.png",
     ];
     this.score = 0;
     this.lives = 3;
