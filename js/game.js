@@ -17,10 +17,10 @@ class Game {
     this.width = 1000;
     this.objects = [];
     this.positiveobjects = [];
-    this.objImages = ["../images/blowfish.png"];
+    this.objImages = ["./images/blowfish.png"];
     this.posObjImages = [
-      "../images/oyster1.png",
-      "../images/octopus.png",
+      "./images/oyster1.png",
+      "./images/octopus.png",
       "./images/shrimp.png",
     ];
     this.score = 0;
